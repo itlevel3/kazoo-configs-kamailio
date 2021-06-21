@@ -29,11 +29,11 @@ sudo service postgresql-12 start
 ```
 Create Kamailio DB
 ```
-su postgres -c '/usr/pgsql-12/bin/createdb kamailio'
+su - postgres -c '/usr/pgsql-12/bin/createdb kamailio'
 ```
 Add DB user and grant privileges
 ```
-sudo su postgres -c psql
+sudo su - postgres -c psql
 	CREATE USER kamailio WITH PASSWORD 'kamailio';
 	GRANT ALL privileges on database kamailio to kamailio;
 ```
@@ -61,7 +61,7 @@ git checkout 4.3-postgres
 ```
 Initialize the kamailio database with all the required tables:
 ```
-psql -U kamailio -d postgres://kamailio:kamailio@127.0.0.1/kamailio -f /etc/kazoo/kamailo/db_scripts/kamailio_initdb_postgres.sql
+psql -U kamailio -d postgres://kamailio:kamailio@127.0.0.1/kamailio -f /etc/kazoo/kamailio/db_scripts/kamailio_initdb_postgres.sql
 ```
 Notice that the backend DB in local.cfg is now postgres
 ```
